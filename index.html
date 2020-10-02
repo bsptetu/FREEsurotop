@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+
+<html lang="ja">
+
+<head>
+    <meta charset="utf-8" />
+    <title>ゲームザーバー選択</title>
+    <meta name="description" content="ホール型オンラインスロットゲーム">
+    <meta name="keywords" content="JGAME,オンラインスロット">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="shortcut icon" href="icon/favicon.png" />
+<!-- アドレスバー等のブラウザのUIを非表示 -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+<!-- default（Safariと同じ） / black（黒） / black-translucent（ステータスバーをコンテンツに含める） -->
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<!-- ホーム画面に表示されるアプリ名 -->
+<meta name="apple-mobile-web-app-title" content="JGAME">
+<!-- ホーム画面に表示されるアプリアイコン -->
+<link rel="apple-touch-icon" sizes="128x128" href="icon/apple-touch-icon.png">
+<link rel="manifest" href="./manifest.json">
+<script>
+if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('ServiceWorker.js')
+      .then((reg) => {
+        console.log('Service worker registered.', reg);
+      });
+}
+</script>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.7.0/css/all.css" crossorigin="anonymous">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/slick-carousel@1/slick/slick.min.css">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/slick-carousel@1/slick/slick-theme.min.css">
+ <link href="https://fonts.googleapis.com/css2?family=M+PLUS+1p&display=swap" rel="stylesheet">
+   <link href="//fonts.googleapis.com/css?family=Asap:400,500,600,700" rel="stylesheet">
+<link href="https://fonts.googleapis.com/earlyaccess/nicomoji.css" rel="stylesheet">
+    <link href="//fonts.googleapis.com/css?family=Abril+Fatface" rel="stylesheet">
+    <link href="//fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+    <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/slick-carousel@1/slick/slick.min.js"></script>
+
+    <style>
+        /*ページ全体の構成*/
+        body{
+            background: #ffffff;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+background-position: top;
+            background-image: url("https://momonga39.web.fc2.com/surotto1.gif");
+            width:100%;
+color: #ffffff;
+            font-size: 16px;
+           font-family: 'M PLUS 1p', sans-serif;
+            line-height: 1.42857;
+            margin: 0;
+        }
+        a:link {
+            color: #999;
+            text-decoration: none;
+        }
+        a:hover {
+            color: #999;
+            text-decoration: none;
+        }
+        a:visited {
+            color: #999;
+            text-decoration: none;
+        }
+        ul{
+            padding: 0;
+        }
+        li{
+            list-style: none;
+        }
+        /* 上部メインイメージの設定 */
+        .wrapTop {
+             1116px;
+            max-width: 100%;
+            margin: 20px auto;
+            margin-bottom: 0px;
+            display: flex;
+            justify-content: center;
+font-family: "Nico Moji";
+        }
+        .wrapTop-leftside{
+            margin-left: 20px;
+        }
+        .wrapTop-leftside-sitename {/*サイトタイトルの設定*/
+            width: 200px;
+       font-family: 'M PLUS 1p', sans-serif;   
+border-bottom: 2px solid #a5a4a4;
+            font-size: 32px;
+            font-family: 'M PLUS 1p', sans-serif;
+            font-weight: 500;
+            color: #656565;
+            position: relative;
+        }
+        .wrapTop-leftside-sitename::before{/*サイトタイトルの下線についている●のサイズ**/
+            content: "";
+            position: absolute;
+            width: 7px;
+            height: 7px;
+            top: 42px;
+            left: 50px;
+            background: #a5a4a4;
+            border-radius: 50%;
+        }
+        /* 上部ナビ側の設定 */
+        .wrapTop-leftside-navList{
+            margin-bottom: 10px;
+        }
+        .wrapTop-leftside-navList > li{
+            line-height: 3;
+            font-family: "Nico Moji";
+            font-size: 14px;
+        }
+        .wrapTop-leftside-navList > li >a{
+            width: 100%;
+            display: block;
+        }
+        .wrapTop-leftside-navList > li >a:hover{/*ナビ　カーソルON時の設定*/
+            background: #555555;
+            color: #fff;
+            transition: 0.8s;
+        }
+       /*メインイメージの設定*/
+        .wrapTop-rightside {/*画像が正方形になる設定*/
+            width: calc(70vmin - 80px);
+            height: calc(70vmin - 80px);
+            margin: 0 auto;
+        }
+        .wrapTop-rightside img {/*画像が中心で切り取られる設定*/
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            font-family: 'object-fit: cover;';/*IE対策*/
+        }
+        /*画面サイズ600px以下のスタイル*/
+        @media screen and (max-width:600px){
+            .wrapTop-rightside {
+            width: 100%;
+            height: calc(100vmin - 17px);
+            margin: 0 auto;
+            }
+        }
+        /*ページ下部------------------------------------------------*/
+        .wrapUnder{/*領域の設定*/
+            margin: 0 auto;
+            text-align: center;
+            background: #f2f2f2;
+        }
+        .wrapUnder-title{/*コンテンツタイトル*/
+            width: 190px;
+            margin: 0 auto 50px;
+            padding: 30px 0 10px;
+            font-size: 24px;
+            font-family: 'M PLUS 1p', sans-serif;
+            position: relative;
+        }
+        .wrapUnder-title:before{/*コンテンツタイトル見出し線*/
+            content: '';
+            position: absolute;
+            display: block;
+            bottom:-5px;
+            width: 60px;
+            height: 1px;
+            left: 50%;
+            -webkit-transform: translateX(-50%);
+            transform: translateX(-50%);
+            background-color: #656565;
+        }
+        /*コンテンツ記事*/
+        .wrapUnder-contents{
+            max-width: 1116px;
+            margin: 0 auto 50px;
+        }
+        .wrapUnder-contents-list{
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+        }
+        .wrapUnder-contents-listItem{
+            width: 250px;
+            height: 250px;
+            margin-bottom: 20px;
+            background: #fff;
+            text-align: left;
+        }
+        .wrapUnder-contents-listItem:hover{/*記事マウスON時の設定*/
+            opacity: 0.8;
+        }
+
+        .wrapUnder-contents-listItem-img{/*記事画像のサイズ設定*/
+            width: 250px;
+            height: 130px;
+        }
+        .wrapUnder-contents-listItem-img img{/*記事画像が切り抜かれる設定*/
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            font-family: 'object-fit: cover;';/*IE対策*/
+        }
+        .wrapUnder-contents-listItem-descriptionDate{/*記事日付スタイル*/
+            padding: 0 10px;
+            font-size: 12px;
+            color: #999;
+            line-height: 2;
+        }
+        .wrapUnder-contents-listItem-descriptionTitle{/*記事タイトル*/
+            padding: 0 10px 4px;
+            font-size: 14px;
+            font-weight: bold;
+        }
+        .wrapUnder-contents-listItem-descriptionText{/*記事テキスト部分*/
+            padding: 0 10px 10px;
+            font-size: 14px;
+        }
+        .wrapUnder-button{/*もっと見るボタン*/
+            padding-bottom: 50px;
+        }
+        .wrapUnder-button > a{
+            font-size: 20px;
+            font-weight: bold;
+            background: #fff;
+            padding: 10px 80px;
+            border-radius: 50px;
+        }
+        .wrapUnder-button > a:hover{/*Show moreボタンマウスON時*/
+            opacity: 0.8;
+        }
+.wf-nicomoji { font-family: "Nico Moji"; }
+        /*画面サイズ600px以下の記事スタイル*/
+        @media(max-width: 600px){
+            .wrapUnder-contents-list{
+                flex-direction: column;
+            }
+            .wrapUnder-contents-listItem{
+                width: 100%;
+                height: calc(100vmin - 17px);
+                margin-bottom: 20px;
+                background: #fff;
+                text-align: left;
+            }
+            .wrapUnder-contents-listItem-img{
+                width: 100%;
+                height: 60%;
+            }
+        }
+        /*フッター*/ /*注釈権利*/
+        .footer-SNSicon{
+            margin: 0 auto 10px;
+            padding: 0;
+            list-style: none;
+            display: flex;
+            justify-content: center;
+        }
+        /*SNSボタン-色サイズ*/
+        .snsIcon{
+            width: 40px;
+            margin: 0 0 0 10px;
+        }
+        .footer{
+            border-top: 1px solid #ccc;
+            text-align: center;
+            padding: 20px 0;
+            font-size: 12px;
+            background: #f2f2f2;
+        }
+.fade{
+  animation: SlideIn 1.4s;
+    opacity: 0.8;
+z-index: 9999;
+}
+
+/* CSSアニメーションの設定 */
+@keyframes SlideIn {
+  0% {
+    opacity: 0;
+    transform: translateX(-64px);
+  }
+  100% {
+    opacity: 0.8;
+    transform: translateX(0px);
+  }
+}
+.fadeb{
+  animation: SlideInb 1.1s;
+}
+
+/* CSSアニメーションの設定 */
+@keyframes SlideInb {
+  0% {
+    opacity: 1;
+    transform: translateY(-64px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.Headline{
+  animation: SlideIn2 1.8s;
+    opacity: 0.8;
+}
+/* CSSアニメーションの設定 */
+@keyframes SlideIn2 {
+  0% {
+    opacity: 0;
+    transform: translateX(0px);
+  }
+  100% {
+    opacity: 0.8;
+    transform: translateX(0);
+  }
+}
+*,
+*:before,
+*:after {
+  -webkit-box-sizing: inherit;
+  box-sizing: inherit;
+}
+
+html {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  font-size: 62.5%;/*rem算出をしやすくするために*/
+}
+
+.btn,
+a.btn,
+button.btn {
+  font-size: 1.6rem;
+  font-weight: 700;
+  line-height: 1.5;
+  position: relative;
+  display: inline-block;
+  padding: 1rem 4rem;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  text-align: center;
+  vertical-align: middle;
+  text-decoration: none;
+  letter-spacing: 0.1em;
+  color: #212529;
+  border-radius: 0.5rem;
+}
+a.btn--orange {
+  color: #fff;
+  background-color: #eb6100;
+  border-bottom: 5px solid #b84c00;
+}
+a.btn--orange:hover {
+  margin-top: 3px;
+  color: #fff;
+  background: #f56500;
+  border-bottom: 2px solid #b84c00;
+}
+a.btn--shadow {
+  -webkit-box-shadow: 0 3px 5px rgba(0, 0, 0, .3);
+  box-shadow: 0 3px 5px rgba(0, 0, 0, .3);
+}
+a.btn--orange {
+  color: #fff;
+  background-color: #eb6100;
+  border-bottom: 5px solid #b84c00;
+}
+a.btn--orange:hover {
+  margin-top: 3px;
+  color: #fff;
+  background: #f56500;
+  border-bottom: 2px solid #b84c00;
+}
+a.btn--shadow {
+  -webkit-box-shadow: 0 3px 5px rgba(0, 0, 0, .3);
+  box-shadow: 0 3px 5px rgba(0, 0, 0, .3);
+}    
+#contents {
+  z-index: 0;
+  font-size: 16px;
+}
+.page-txt {
+  margin: 30px 0 0;
+  height: 2000px;
+}
+</style>
+</head>
+<body id="top">
+<div class="fadeb" style="text-align: left;"><br />
+<table width="170" height="24" style="background: #eeeeee; width: 307px; height: 42px; margin-left: auto; margin-right: auto;" border="3">
+<tbody>
+<tr>
+<td style="text-align: center;"><span style="color: #000000;"><strong>ホール型オンラインスロットゲーム</strong></span></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="wrapTop"><!--上段-->
+<div class="fade"></div>
+<div class="Headline">
+<table width="150" height="4" style="background: #eeeeee; width: 212px; height: 200px; float: left;" border="3">
+<tbody>
+<tr>
+<td style="text-align: center;">
+<div class="wrapTop-leftside-sitename" style="text-align: center;"><span style="font-size: 18pt;">J-GAME</span></div>
+<br /> <span style="color: #ff0000; font-size: 12pt;"><strong>サーバー選択</strong> </span><br />
+<div class="wrapTop-leftside-nav">
+<ul class="wrapTop-leftside-navList">
+<li><a href="https://bsptetu.github.io/jsurorenta-1/"><span style="color: #000000;">サーバー1</span></a></li>
+<li><a href="https://bsptetu.github.io/jsurorenta-2/"><span style="color: #000000;">サーバー2</span></a></li>
+<li><a href="https://bsptetu.github.io/jsurorenta-3/"><span style="color: #000000;">サーバー3</span></a></li>
+<li><a href="#">サーバー4準備中</a></li>
+<li><a href="#">サーバー5準備中</a></li>
+</ul>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<!--objedt-fit（IE対策）-->
+<p>
+<script src="//cdnjs.cloudflare.com/ajax/libs/object-fit-images/3.2.3/ofi.js"></script>
+<script>// <![CDATA[
+objectFitImages();
+// ]]></script>
+</p>
+<p style="text-align: center;"><span style="color: #000000;"><br /><span style="color: #ff6600;">開発ツール:RPGツクールMV</span><br /><span style="color: #ff6600;"><br />タイトル：[ジュエルセイバーFREE]<br />URL：[http://www.jewel-s.jp/]<br />&copy;2020,JGAME</span></span></p>
+</body>
+
+</html>
